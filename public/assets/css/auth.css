@@ -1,0 +1,132 @@
+/* =========================================================
+   AUTH.CSS
+   Shared layout for login/register/password/lock/error pages.
+   Split screen: brand panel on the left, form on the right
+   (stacks on mobile).
+   ========================================================= */
+
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+}
+
+.auth-brand-panel {
+  flex: 1 1 46%;
+  background: linear-gradient(155deg, #4453D6 0%, #5B6EF5 55%, #7C8CFB 100%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-brand-panel::before,
+.auth-brand-panel::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+}
+.auth-brand-panel::before { width: 320px; height: 320px; top: -100px; right: -100px; }
+.auth-brand-panel::after { width: 220px; height: 220px; bottom: -60px; left: -60px; }
+
+.auth-brand-panel .brand-logo {
+  width: 42px; height: 42px; border-radius: 10px;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-weight: 700;
+}
+
+.auth-brand-panel .auth-illustration {
+  font-size: 1.35rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.4;
+  max-width: 380px;
+  position: relative;
+  z-index: 1;
+}
+
+.auth-form-panel {
+  flex: 1 1 54%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: var(--body-bg);
+}
+
+.auth-form-card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form-card .auth-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.35rem; }
+.auth-form-card .auth-subtitle { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 1.75rem; }
+
+.auth-divider {
+  display: flex; align-items: center; gap: 0.75rem;
+  color: var(--text-muted); font-size: 0.78rem;
+  margin: 1.25rem 0;
+}
+.auth-divider::before, .auth-divider::after { content: ""; flex: 1; height: 1px; background: var(--border-color); }
+
+.auth-social-btn {
+  display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  background: var(--surface);
+  transition: background var(--transition-fast);
+}
+.auth-social-btn:hover { background: var(--body-bg); }
+
+@media (max-width: 991.98px) {
+  .auth-brand-panel { display: none; }
+  .auth-form-panel { flex: 1 1 100%; }
+}
+
+/* ---- Error / status pages (404, 500, maintenance, coming soon) ---- */
+.status-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--body-bg);
+}
+.status-page .status-code {
+  font-family: var(--font-display);
+  font-size: 7rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--bs-primary);
+  opacity: 0.9;
+}
+.status-page .status-title { font-size: 1.5rem; font-weight: 700; margin: 1rem 0 0.5rem; }
+.status-page .status-text { color: var(--text-secondary); max-width: 420px; margin: 0 auto 1.5rem; }
+
+/* ---- Lock screen ---- */
+.lock-screen-avatar {
+  width: 90px; height: 90px; border-radius: 50%;
+  border: 4px solid var(--surface); box-shadow: var(--shadow-md);
+  margin: 0 auto 1rem; display: block;
+}
+
+/* ---- Countdown (coming soon) ---- */
+.countdown-box {
+  display: flex; gap: 1rem; justify-content: center; margin: 1.5rem 0;
+}
+.countdown-box .countdown-unit {
+  background: var(--surface); border: 1px solid var(--border-color);
+  border-radius: var(--radius-md); padding: 0.85rem 1.1rem; min-width: 76px;
+  box-shadow: var(--shadow-sm);
+}
+.countdown-box .countdown-value { font-family: var(--font-display); font-size: 1.6rem; font-weight: 700; color: var(--bs-primary); }
+.countdown-box .countdown-label { font-size: 0.7rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; }

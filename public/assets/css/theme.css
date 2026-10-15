@@ -1,0 +1,190 @@
+/* =========================================================
+   THEME.CSS
+   Global Bootstrap component overrides so every page
+   (tables, forms, buttons, badges...) shares one visual
+   language. Loaded after Bootstrap, before page-specific CSS.
+   ========================================================= */
+
+/* ---- Buttons ---- */
+.btn {
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1.1rem;
+  transition: all var(--transition-fast);
+}
+.btn-sm { padding: 0.32rem 0.75rem; font-size: 0.78rem; }
+.btn-lg { padding: 0.7rem 1.4rem; font-size: 0.95rem; }
+
+.btn-primary { background: var(--bs-primary); border-color: var(--bs-primary); }
+.btn-primary:hover, .btn-primary:focus { background: var(--primary-dark); border-color: var(--primary-dark); }
+
+.btn-icon {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+}
+
+.btn-outline-light-custom {
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  background: var(--surface);
+}
+.btn-outline-light-custom:hover { background: var(--body-bg); color: var(--text-primary); }
+
+/* ---- Badges ---- */
+.badge { font-weight: 600; padding: 0.4em 0.65em; border-radius: 6px; }
+.badge.rounded-pill { padding: 0.4em 0.85em; }
+
+/* ---- Forms ---- */
+.form-control, .form-select {
+  border-radius: var(--radius-sm);
+  border-color: var(--border-color);
+  font-size: 0.875rem;
+  padding: 0.55rem 0.85rem;
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--bs-primary);
+  box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.15);
+  background-color: var(--surface);
+  color: var(--text-primary);
+}
+.form-label { font-size: 0.825rem; font-weight: 600; color: var(--text-primary); margin-bottom: 0.4rem; }
+.form-text { font-size: 0.78rem; }
+
+.input-group-text {
+  background: var(--body-bg);
+  border-color: var(--border-color);
+  color: var(--text-secondary);
+}
+
+.form-check-input:checked { background-color: var(--bs-primary); border-color: var(--bs-primary); }
+.form-switch .form-check-input:checked { background-color: var(--bs-primary); }
+
+.form-floating > label { font-size: 0.85rem; color: var(--text-secondary); }
+
+/* ---- Tables ---- */
+.table {
+  color: var(--text-primary);
+  --bs-table-color: var(--text-primary);
+}
+.table > :not(caption) > * > * {
+  border-bottom-color: var(--border-color);
+  padding: 0.85rem 1rem;
+}
+.table thead th {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  font-weight: 700;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--body-bg);
+}
+.table tbody tr { transition: background var(--transition-fast); }
+.table-hover tbody tr:hover { background: var(--body-bg); color: var(--text-primary); }
+
+/* ---- Nav Tabs / Pills ---- */
+.nav-tabs { border-bottom-color: var(--border-color); }
+.nav-tabs .nav-link {
+  border: none;
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 0.65rem 1rem;
+  border-bottom: 2px solid transparent;
+}
+.nav-tabs .nav-link.active {
+  color: var(--bs-primary);
+  background: transparent;
+  border-bottom-color: var(--bs-primary);
+}
+.nav-pills .nav-link { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); border-radius: var(--radius-sm); }
+.nav-pills .nav-link.active { background: var(--bs-primary); }
+
+/* ---- Accordion ---- */
+.accordion-item { background: var(--surface); border-color: var(--border-color); }
+.accordion-button {
+  background: var(--surface);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+.accordion-button:not(.collapsed) { background: var(--primary-light); color: var(--bs-primary); box-shadow: none; }
+.accordion-button:focus { box-shadow: none; border-color: var(--border-color); }
+
+/* ---- Modal / Offcanvas ---- */
+.modal-content, .offcanvas {
+  background: var(--surface);
+  color: var(--text-primary);
+  border-radius: var(--radius-lg);
+  border: none;
+}
+.modal-header, .modal-footer, .offcanvas-header {
+  border-color: var(--border-color);
+}
+
+/* ---- Dropdown menu ---- */
+.dropdown-menu {
+  border: none;
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+  font-size: 0.85rem;
+}
+.dropdown-item { color: var(--text-primary); padding: 0.5rem 1rem; }
+.dropdown-item:hover, .dropdown-item:focus { background: var(--body-bg); color: var(--text-primary); }
+.dropdown-item.active, .dropdown-item:active { background: var(--bs-primary); color: #fff; }
+
+/* ---- Pagination ---- */
+.pagination .page-link {
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+  font-size: 0.82rem;
+  background: var(--surface);
+}
+.pagination .page-item.active .page-link { background: var(--bs-primary); border-color: var(--bs-primary); }
+
+/* ---- Progress ---- */
+.progress { background: var(--body-bg); border-radius: 999px; height: 8px; }
+.progress-bar { border-radius: 999px; }
+
+/* ---- Tooltip / Popover ---- */
+.tooltip-inner { font-size: 0.78rem; border-radius: var(--radius-sm); }
+.popover { border: none; box-shadow: var(--shadow-lg); border-radius: var(--radius-md); }
+
+/* ---- Skeleton Loading ---- */
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--border-color);
+  border-radius: var(--radius-sm);
+}
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  animation: skeleton-shimmer 1.4s infinite;
+}
+[data-theme="dark"] .skeleton::after {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+}
+@keyframes skeleton-shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* ---- Toast ---- */
+.toast { border: none; box-shadow: var(--shadow-lg); border-radius: var(--radius-md); }
+
+/* ---- Breadcrumb ---- */
+.breadcrumb-item + .breadcrumb-item::before { color: var(--text-muted); }
+.breadcrumb-item a { color: var(--text-secondary); }
+.breadcrumb-item.active { color: var(--text-primary); font-weight: 600; }

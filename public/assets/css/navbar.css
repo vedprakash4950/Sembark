@@ -1,0 +1,169 @@
+/* =========================================================
+   NAVBAR.CSS
+   Fixed top navbar: sidebar toggle, search, theme switch,
+   notifications/messages dropdowns, profile menu.
+   ========================================================= */
+
+.app-navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: var(--sidebar-width);
+  height: var(--navbar-height);
+  background: var(--navbar-bg);
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  z-index: 1030;
+  transition: left var(--transition-base), background var(--transition-base);
+}
+
+.app-wrapper.sidebar-collapsed .app-navbar {
+  left: var(--sidebar-collapsed-width);
+}
+
+@media (max-width: 991.98px) {
+  .app-navbar { left: 0; }
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.navbar-toggler-custom,
+.navbar-icon-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  position: relative;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.navbar-toggler-custom:hover,
+.navbar-icon-btn:hover {
+  background: var(--primary-light);
+  color: var(--bs-primary);
+}
+
+.navbar-search {
+  position: relative;
+  margin-left: 0.5rem;
+}
+.navbar-search .form-control {
+  width: 280px;
+  border-radius: 999px;
+  background: var(--body-bg);
+  border: 1px solid var(--border-color);
+  padding-left: 2.5rem;
+  font-size: 0.85rem;
+}
+.navbar-search i {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted);
+}
+
+@media (max-width: 767.98px) {
+  .navbar-search { display: none; }
+}
+
+/* ---- Notification badge dot ---- */
+.icon-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--bs-danger);
+  border: 2px solid var(--navbar-bg);
+}
+
+/* ---- Dropdown panels ---- */
+.dropdown-panel {
+  width: 340px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.dropdown-panel .dropdown-panel-header {
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dropdown-panel .dropdown-panel-body {
+  max-height: 320px;
+  overflow-y: auto;
+}
+
+.dropdown-panel-footer {
+  padding: 0.6rem 1.1rem;
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.notif-item,
+.message-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem 1.1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: background var(--transition-fast);
+}
+.notif-item:hover,
+.message-item:hover { background: var(--body-bg); }
+.notif-item:last-child,
+.message-item:last-child { border-bottom: none; }
+
+.notif-item .icon-box { width: 38px; height: 38px; font-size: 1rem; }
+
+/* ---- User profile dropdown ---- */
+.navbar-user-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: none;
+  background: transparent;
+  padding: 0.3rem 0.5rem 0.3rem 0.3rem;
+  border-radius: 999px;
+  transition: background var(--transition-fast);
+}
+.navbar-user-btn:hover { background: var(--primary-light); }
+.navbar-user-btn .user-meta { text-align: left; line-height: 1.2; }
+.navbar-user-btn .user-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+.navbar-user-btn .user-role { font-size: 0.72rem; color: var(--text-secondary); }
+
+@media (max-width: 575.98px) {
+  .navbar-user-btn .user-meta { display: none; }
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--bs-success);
+  border: 2px solid var(--navbar-bg);
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

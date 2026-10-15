@@ -1,0 +1,123 @@
+/* =========================================================
+   FORMS.CSS
+   Extra styling for form controls not fully covered by
+   Bootstrap defaults: color swatches, range, tags, file
+   drop-zone, masked inputs, and the multi-step form wizard.
+   ========================================================= */
+
+/* ---- Color picker swatches ---- */
+.color-swatch-group { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.color-swatch {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid var(--surface);
+  box-shadow: 0 0 0 1px var(--border-color);
+  cursor: pointer;
+  position: relative;
+  transition: transform var(--transition-fast);
+}
+.color-swatch:hover { transform: scale(1.1); }
+.color-swatch.selected::after {
+  content: "\F633"; font-family: "bootstrap-icons";
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 0.85rem; text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+.form-control-color { width: 100%; height: 42px; padding: 0.25rem; border-radius: var(--radius-sm); }
+
+/* ---- Range slider ---- */
+.form-range::-webkit-slider-thumb { background: var(--bs-primary); }
+.form-range::-moz-range-thumb { background: var(--bs-primary); }
+.range-value-label {
+  display: inline-block; min-width: 42px; text-align: center;
+  font-size: 0.78rem; font-weight: 700; color: var(--bs-primary);
+  background: var(--primary-light); border-radius: 999px; padding: 0.1rem 0.5rem;
+}
+
+/* ---- Tags input ---- */
+.tags-input-wrap {
+  display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center;
+  border: 1px solid var(--border-color); border-radius: var(--radius-sm);
+  padding: 0.5rem 0.6rem; background: var(--surface);
+}
+.tags-input-wrap:focus-within { border-color: var(--bs-primary); box-shadow: 0 0 0 0.2rem rgba(var(--bs-primary-rgb), 0.15); }
+.tag-pill {
+  display: inline-flex; align-items: center; gap: 0.35rem;
+  background: var(--primary-light); color: var(--bs-primary);
+  border-radius: 999px; padding: 0.2rem 0.3rem 0.2rem 0.65rem;
+  font-size: 0.78rem; font-weight: 600;
+}
+.tag-pill .tag-remove { cursor: pointer; font-size: 0.7rem; padding: 2px; }
+.tags-input-field { flex: 1 1 90px; border: none; outline: none; font-size: 0.85rem; min-width: 90px; background: transparent; color: var(--text-primary); }
+
+/* ---- File upload drop-zone ---- */
+.file-drop-zone {
+  border: 2px dashed var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+.file-drop-zone:hover, .file-drop-zone.dragover {
+  border-color: var(--bs-primary);
+  background: var(--primary-light);
+  color: var(--bs-primary);
+}
+.file-drop-zone i { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+
+.file-preview-thumb {
+  position: relative; width: 84px; height: 84px; border-radius: var(--radius-sm);
+  overflow: hidden; border: 1px solid var(--border-color);
+}
+.file-preview-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.file-preview-thumb .remove-thumb {
+  position: absolute; top: 3px; right: 3px; width: 20px; height: 20px;
+  border-radius: 50%; background: rgba(0,0,0,0.6); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 0.65rem; cursor: pointer;
+}
+
+/* ---- Floating label tweaks ---- */
+.form-floating > .form-control:focus ~ label,
+.form-floating > .form-control:not(:placeholder-shown) ~ label {
+  color: var(--bs-primary);
+}
+
+/* ---- Form Wizard ---- */
+.wizard-progress { display: flex; align-items: center; margin-bottom: 2rem; }
+.wizard-step-indicator {
+  display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+  position: relative; flex: 1 1 auto; text-align: center;
+}
+.wizard-step-indicator .step-circle {
+  width: 38px; height: 38px; border-radius: 50%;
+  background: var(--body-bg); border: 2px solid var(--border-color);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.85rem; color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  z-index: 1;
+}
+.wizard-step-indicator .step-label { font-size: 0.78rem; font-weight: 600; color: var(--text-secondary); }
+.wizard-step-indicator::after {
+  content: ""; position: absolute; top: 19px; left: 50%; width: 100%; height: 2px;
+  background: var(--border-color); z-index: 0;
+}
+.wizard-step-indicator:last-child::after { display: none; }
+
+.wizard-step-indicator.completed .step-circle { background: var(--bs-success); border-color: var(--bs-success); color: #fff; }
+.wizard-step-indicator.completed::after { background: var(--bs-success); }
+.wizard-step-indicator.active .step-circle { background: var(--bs-primary); border-color: var(--bs-primary); color: #fff; }
+.wizard-step-indicator.active .step-label,
+.wizard-step-indicator.completed .step-label { color: var(--text-primary); }
+
+.wizard-pane { display: none; }
+.wizard-pane.active { display: block; animation: fadeInUp 0.3s ease; }
+
+.wizard-success-icon {
+  width: 84px; height: 84px; border-radius: 50%;
+  background: var(--success-light); color: var(--bs-success);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem; margin: 0 auto 1rem;
+}
+
+/* ---- Input masking placeholder style ---- */
+.masked-input { letter-spacing: 0.5px; }

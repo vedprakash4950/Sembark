@@ -1,0 +1,100 @@
+/* =========================================================
+   VARIABLES.CSS
+   Design tokens for the whole admin theme.
+   Change values here to re-skin the entire panel.
+   ========================================================= */
+
+:root {
+  /* ---- Brand / Status Colors ---- */
+  --bs-primary: #5B6EF5;
+  --bs-primary-rgb: 91, 110, 245;
+  --primary-dark: #4453D6;
+  --primary-light: #EEF0FE;
+
+  --bs-success: #17C666;
+  --bs-success-rgb: 23, 198, 102;
+  --success-light: #E8FBF1;
+
+  --bs-warning: #FFB400;
+  --bs-warning-rgb: 255, 180, 0;
+  --warning-light: #FFF6E0;
+
+  --bs-danger: #FF4D4F;
+  --bs-danger-rgb: 255, 77, 79;
+  --danger-light: #FFEBEC;
+
+  --bs-info: #2DCEE3;
+  --bs-info-rgb: 45, 206, 227;
+  --info-light: #E6FAFC;
+
+  --bs-secondary: #6C757D;
+  --bs-secondary-rgb: 108, 117, 125;
+
+  --bs-dark: #1E2139;
+  --bs-light: #F5F6FA;
+
+  /* ---- Neutral / Surface ---- */
+  --body-bg: #F5F6FA;
+  --surface: #FFFFFF;
+  --border-color: #E7E9F3;
+  --text-primary: #23273B;
+  --text-secondary: #7B8194;
+  --text-muted: #A4A9B8;
+
+  /* ---- Sidebar ---- */
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 80px;
+  --sidebar-bg: #1B1E34;
+  --sidebar-bg-active: #262a48;
+  --sidebar-text: #AEB2CC;
+  --sidebar-text-active: #FFFFFF;
+  --sidebar-icon: #7D82A8;
+  --sidebar-border: rgba(255, 255, 255, 0.06);
+
+  /* ---- Navbar ---- */
+  --navbar-height: 68px;
+  --navbar-bg: #FFFFFF;
+
+  /* ---- Typography ---- */
+  --font-display: 'Poppins', 'Inter', sans-serif;
+  --font-body: 'Inter', 'Roboto', sans-serif;
+
+  /* ---- Radius / Shadow ---- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-sm: 0 2px 6px rgba(30, 33, 57, 0.06);
+  --shadow-md: 0 6px 18px rgba(30, 33, 57, 0.08);
+  --shadow-lg: 0 12px 32px rgba(30, 33, 57, 0.12);
+
+  /* ---- Transitions ---- */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+}
+
+/* =========================================================
+   DARK MODE OVERRIDES
+   Toggled via [data-theme="dark"] on <html>
+   ========================================================= */
+[data-theme="dark"] {
+  --body-bg: #14162B;
+  --surface: #1C1F3A;
+  --border-color: #2A2E4E;
+  --text-primary: #EDEEFB;
+  --text-secondary: #9EA3C4;
+  --text-muted: #6C7196;
+
+  --navbar-bg: #1C1F3A;
+  --sidebar-bg: #14162B;
+  --sidebar-bg-active: #232752;
+
+  --primary-light: #262a52;
+  --success-light: #16301f;
+  --warning-light: #322913;
+  --danger-light: #331d1e;
+  --info-light: #14272b;
+
+  --shadow-sm: 0 2px 6px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
