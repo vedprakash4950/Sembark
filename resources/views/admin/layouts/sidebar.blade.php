@@ -19,7 +19,7 @@
                 <a href="index.html" class="sidebar-nav-link active-link">
                     <i class="bi bi-grid-1x2-fill link-icon"></i>
                     <span class="link-text">Dashboard</span>
-                </a>
+                </button></form>
             </li>
         </ul>
 
@@ -32,10 +32,10 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="{{route('logout')}}" class="sidebar-nav-link">
+                <form method="POST" action="{{ route('logout') }}">@csrf<button type="submit" class="sidebar-nav-link border-0 bg-transparent w-100 text-start">
                     <i class="bi bi-box-arrow-right link-icon"></i>
                     <span class="link-text">Logout</span>
-                </a>
+                </button></form>
             </li>
         </ul>
     </div>

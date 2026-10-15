@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class User extends Authenticatable
 {
@@ -24,6 +26,7 @@ class User extends Authenticatable
         'email',
         'phone',
         'password',
+        'company_id',
     ];
 
     /**
@@ -33,8 +36,13 @@ class User extends Authenticatable
      */
     protected $hidden = [
         'password',
+        'company_id',
         'remember_token',
     ];
+
+    public function company(): BelongsTo { return $this->belongsTo(Company::class); }
+
+    public function shortLinks(): HasMany { return $this->hasMany(ShortLink::class); }
 
     /**
      * Get the attributes that should be cast.

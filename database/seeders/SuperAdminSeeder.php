@@ -14,7 +14,7 @@ class SuperAdminSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::create([
+        $user = User::firstOrCreate(['email' => 'superadmin@crm.com'], [
             'name' => 'Super Admin',
             'email' => 'superadmin@crm.com',
             'phone' => '9999999999',
@@ -22,6 +22,6 @@ class SuperAdminSeeder extends Seeder
             'is_active' => true,
         ]);
 
-        $user->assignRole('super_admin');
+        $user->syncRoles(['super_admin']);
     }
 }

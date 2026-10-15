@@ -1,17 +1,9 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    {{ __("You're logged in!") }}
-                </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Linkboard</title><style>body{font:15px system-ui;max-width:1100px;margin:2rem auto;padding:0 1rem;color:#172033}header{display:flex;justify-content:space-between;align-items:center}section{border:1px solid #ddd;border-radius:8px;padding:1rem;margin:1rem 0}input,select,button{font:inherit;padding:.55rem;margin:.25rem}table{width:100%;border-collapse:collapse}th,td{text-align:left;padding:.65rem;border-bottom:1px solid #eee;overflow-wrap:anywhere}.notice{padding:.8rem;background:#effaf1}form.inline{display:flex;gap:.3rem;flex-wrap:wrap}</style></head><body>
+<header><div><h1>Linkboard</h1><p>{{ auth()->user()->name }} · {{ auth()->user()->getRoleNames()->first() }}{{ auth()->user()->company ? ' · '.auth()->user()->company->name : '' }}</p></div><form method="post" action="{{ route('logout') }}">@csrf<button>Log out</button></form></header>
+@if(session('status'))<p class="notice">{{ session('status') }}</p>@endif
+@if(session('invitation_url'))<p class="notice">Invitation created. Share this link (expires in 7 days): <a href="{{ session('invitation_url') }}">{{ session('invitation_url') }}</a></p>@endif
+@unless(auth()->user()->hasRole('super_admin'))<section><h2>Create a short link</h2><form class="inline" method="post" action="{{ route('short-links.store') }}">@csrf<input type="url" name="destination_url" placeholder="https://example.com/page" required style="flex:1;min-width:260px"><button>Create</button></form>@error('destination_url')<p>{{ $message }}</p>@enderror</section>@endunless
+@if(auth()->user()->hasAnyRole(['super_admin','admin']))<section><h2>Invite someone</h2><form class="inline" method="post" action="{{ route('invitations.store') }}">@csrf<input name="name" placeholder="Name" required><input type="email" name="email" placeholder="Email" required><select name="role"><option value="admin">Admin</option>@if(auth()->user()->hasRole('admin'))<option value="member">Member</option>@endif</select>@if(auth()->user()->hasRole('super_admin'))<input name="company_name" placeholder="New company name" required>@endif<button>Create invitation</button></form>@foreach($errors->all() as $error)<p>{{ $error }}</p>@endforeach</section>@endif
+<section><h2>Short links</h2><table><thead><tr><th>Short URL</th><th>Destination</th><th>Created by</th>@if(auth()->user()->hasRole('super_admin'))<th>Company</th>@endif<th>Created</th></tr></thead><tbody>@forelse($links as $link)<tr><td><a href="{{ route('short-links.redirect',$link->code) }}" target="_blank">{{ route('short-links.redirect',$link->code) }}</a></td><td>{{ $link->destination_url }}</td><td>{{ $link->user->name }}</td>@if(auth()->user()->hasRole('super_admin'))<td>{{ $link->company->name }}</td>@endif<td>{{ $link->created_at->format('Y-m-d') }}</td></tr>@empty<tr><td colspan="5">No short links yet.</td></tr>@endforelse</tbody></table>{{ $links->links() }}</section>
+</body></html>
